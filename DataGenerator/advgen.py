@@ -9,7 +9,6 @@ import os, random
 # with turrets: 586 x 588 (no border: 534x534)
 # w/o turrets: 512 x 512
 # Champion icon size : 372x374
-map = Image.open('TempMap1.png')
 champion = Image.open('Blue/Aatrox.png')
 champion = champion.crop(champion.getbbox())
 
@@ -24,7 +23,8 @@ wr= csv.writer(f)
 wr.writerow(['image', 'xmin', 'ymin', 'xmax', 'ymax', 'class'])
 
     # for each champion in team
-for i in range(1):
+for i in range(5):
+    map = Image.open('TempMap1.png')
     for x in range(5):
         path = "Blue/"
         files = os.listdir(path)
@@ -82,4 +82,4 @@ for i in range(1):
         wr.writerow(['test' + str(i) + '.png', red_minx, red_miny, red_maxx, red_maxy, red_name[:-4]])
     
 
-    map.save('Map/test' + str(i) + '.png')
+    map.save('Adv_test/' + str(i) + '.png')

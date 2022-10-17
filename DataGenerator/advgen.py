@@ -2,18 +2,23 @@ import random
 from PIL import Image
 
 
-#Get first champion icon for unified dimension
+# Get first champion icon for unified dimension
+# map size:
+# with turrets: 586 x 588 (no border: 534x534)
+# w/o turrets: 512 x 512
+# Champion icon size : 372x374
+map = Image.open('TempMap1.png')
 champion = Image.open('Blue/Blue1.png')
 champion = champion.crop(champion.getbbox())
 
 # this part is resizing to match minimap icon ratio
-width = int(champion.width/9)
-height = int(champion.height/9)
+MAP_SIZE = 534
+width = int(MAP_SIZE / 10)
+height = int(MAP_SIZE / 10)
 champion = champion.resize((width, height))
 
 # for each image to create
-for i in range(10):
-    map = Image.open('Map.png')
+for i in range(1):
 
     # for each champion in team
     for x in range(5):
@@ -53,4 +58,4 @@ for i in range(10):
             red_champion
         )
         
-    map.save('Map/test' + str(i) + '.png')
+    map.save('Adv_test/' + str(i) + '.png')

@@ -5,13 +5,17 @@ from PIL import Image
 #Get first champion icon for unified dimension
 champion = Image.open('Blue/Blue1.png')
 champion = champion.crop(champion.getbbox())
+
+# this part is resizing to match minimap icon ratio
 width = int(champion.width/9)
 height = int(champion.height/9)
 champion = champion.resize((width, height))
 
+# for each image to create
 for i in range(10):
     map = Image.open('Map.png')
 
+    # for each champion in team
     for x in range(5):
         blue_name = "Blue/Blue" + str(random.randint(1,161)) + ".png"
         red_name = "Red/Red" + str(random.randint(1,161)) + ".png"

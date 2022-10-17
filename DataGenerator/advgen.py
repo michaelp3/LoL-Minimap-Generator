@@ -2,6 +2,7 @@ import random
 from PIL import Image
 import csv
 import os, random
+import timeit
 
 # global constants
 MAP_SIZE = 534
@@ -10,6 +11,7 @@ PING_PROBABILITY = 0.05
 N_IMAGES = 1000
 
 def main():
+    start = timeit.default_timer()
     # Get first champion icon for unified dimension
     # map size:
     # with turrets: 586 x 588 (no border: 534x534)
@@ -30,9 +32,9 @@ def main():
     # pings filename array
     ping_files = ["blue_ping.png", "red_ping1.png", "yellow_ping.png"]
 
-    # for each champion in team
-    for i in range(5):
+    for i in range(N_IMAGES):
         map = Image.open('TempMap1.png')
+        # for each champion in team
         for x in range(5):
             path = "Blue/"
             files = os.listdir(path)
@@ -103,13 +105,17 @@ def main():
                 red_pingx = ping_coordinate(red_ping_idx, red_minx, red_maxx)#random.randrange(red_minx-ICON_SIZE, red_maxx-ICON_SIZE)
                 red_pingy = ping_coordinate(red_ping_idx, red_miny, red_maxy)#random.randrange(red_miny-ICON_SIZE, red_maxy-ICON_SIZE)
 
-            map.paste(blue_ping, (blue_pingx, blue_pingy), blue_ping)
-            map.paste(red_ping, (red_pingx, red_pingy), red_ping)
+                map.paste(blue_ping, (blue_pingx, blue_pingy), blue_ping)
+                map.paste(red_ping, (red_pingx, red_pingy), red_ping)
 
             wr.writerow(['test' + str(i) + '.png', blue_minx, blue_miny, blue_maxx, blue_maxy, blue_name[:-4]])
             wr.writerow(['test' + str(i) + '.png', red_minx, red_miny, red_maxx, red_maxy, red_name[:-4]])
 
         map.save('Adv_test/' + str(i) + '.png')
+        print(f"done {i}")
+    
+    end = timeit.default_timer()
+    print(f"time taken: {end - start}")
 
 
 # calculate coordinate of ping depending on ping color
@@ -125,10 +131,6 @@ def resize_ping(idx, width, height):
         return (int(width*2), int(height*2))
     else:
         return (width//2, height//2)
-
-
-
-
 
 if __name__ == "__main__":
     main()

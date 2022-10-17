@@ -7,8 +7,8 @@ import timeit
 # global constants
 MAP_SIZE = 534
 ICON_SIZE =int(MAP_SIZE/10)
-PING_PROBABILITY = 0.05
-N_IMAGES = 1000
+PING_PROBABILITY = 0.3
+N_IMAGES = 10
 
 def main():
     start = timeit.default_timer()
@@ -111,7 +111,7 @@ def main():
             wr.writerow(['test' + str(i) + '.png', blue_minx, blue_miny, blue_maxx, blue_maxy, blue_name[:-4]])
             wr.writerow(['test' + str(i) + '.png', red_minx, red_miny, red_maxx, red_maxy, red_name[:-4]])
 
-        map.save('Adv_test/' + str(i) + '.png')
+        map.save('Adv_test/wping/' + str(i) + '.png')
         print(f"done {i}")
     
     end = timeit.default_timer()
@@ -123,7 +123,7 @@ def ping_coordinate(idx, min, max):
     if idx < 2:
         return random.randrange(min - ICON_SIZE, max - ICON_SIZE)
     else:
-        return random.randrange(min, max)
+        return random.randrange(min - ICON_SIZE//2, max - ICON_SIZE//2)
 
 # calculate iamge size of ping depending on ping color
 def resize_ping(idx, width, height):

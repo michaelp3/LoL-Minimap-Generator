@@ -100,10 +100,10 @@ def main():
             red_ping = red_ping.resize(resize_ping(red_ping_idx, width, height))
             # get random coordinates near icon
             if random.random() < PING_PROBABILITY:
-                blue_pingx = ping_coordinate(blue_ping_idx, blue_minx, blue_maxx)#random.randrange(blue_minx-ICON_SIZE, blue_maxx-ICON_SIZE)
-                blue_pingy = ping_coordinate(blue_ping_idx, blue_miny, blue_maxy)#random.randrange(blue_miny-ICON_SIZE, blue_maxy-ICON_SIZE)
-                red_pingx = ping_coordinate(red_ping_idx, red_minx, red_maxx)#random.randrange(red_minx-ICON_SIZE, red_maxx-ICON_SIZE)
-                red_pingy = ping_coordinate(red_ping_idx, red_miny, red_maxy)#random.randrange(red_miny-ICON_SIZE, red_maxy-ICON_SIZE)
+                blue_pingx = ping_coordinate(blue_ping_idx, blue_minx, blue_maxx)
+                blue_pingy = ping_coordinate(blue_ping_idx, blue_miny, blue_maxy)
+                red_pingx = ping_coordinate(red_ping_idx, red_minx, red_maxx)
+                red_pingy = ping_coordinate(red_ping_idx, red_miny, red_maxy)
 
                 map.paste(blue_ping, (blue_pingx, blue_pingy), blue_ping)
                 map.paste(red_ping, (red_pingx, red_pingy), red_ping)

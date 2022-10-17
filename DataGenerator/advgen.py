@@ -1,5 +1,7 @@
 import random
 from PIL import Image
+import csv
+import os, random
 
 
 # Get first champion icon for unified dimension
@@ -8,7 +10,7 @@ from PIL import Image
 # w/o turrets: 512 x 512
 # Champion icon size : 372x374
 map = Image.open('TempMap1.png')
-champion = Image.open('Blue/Blue1.png')
+champion = Image.open('Blue/Aatrox.png')
 champion = champion.crop(champion.getbbox())
 
 # this part is resizing to match minimap icon ratio
@@ -17,19 +19,26 @@ width = int(MAP_SIZE / 10)
 height = int(MAP_SIZE / 10)
 champion = champion.resize((width, height))
 
-# for each image to create
-for i in range(1):
+f = open('test.csv', 'w', newline='')
+wr= csv.writer(f)
+wr.writerow(['image', 'xmin', 'ymin', 'xmax', 'ymax', 'class'])
 
     # for each champion in team
+for i in range(1):
     for x in range(5):
-        blue_name = "Blue/Blue" + str(random.randint(1,161)) + ".png"
-        red_name = "Red/Red" + str(random.randint(1,161)) + ".png"
+        path = "Blue/"
+        files = os.listdir(path)
+        blue_name = random.choice(files)
 
-        blue_champion = Image.open(blue_name)
+        path = "Red/"
+        files = os.listdir(path)
+        red_name = random.choice(files)
+
+        blue_champion = Image.open("Blue/" + blue_name)
         blue_champion = blue_champion.crop(blue_champion.getbbox())
         blue_champion = blue_champion.resize((width, height))
 
-        red_champion = Image.open(red_name)
+        red_champion = Image.open("Red/" + red_name)
         red_champion = red_champion.crop(red_champion.getbbox())
         red_champion = red_champion.resize((width, height))
 
@@ -58,4 +67,19 @@ for i in range(1):
             red_champion
         )
         
-    map.save('Adv_test/' + str(i) + '.png')
+        blue_minx = blue_x
+        blue_maxx= blue_x + blue_champion.width
+        blue_miny = blue_y
+        blue_maxy = blue_y + blue_champion.height
+        
+        red_minx = red_x
+        red_maxx = red_x + red_champion.width
+        red_miny = red_y
+        red_maxy = red_y + red_champion.height
+
+
+        wr.writerow(['test' + str(i) + '.png', blue_minx, blue_miny, blue_maxx, blue_maxy, blue_name[:-4]])
+        wr.writerow(['test' + str(i) + '.png', red_minx, red_miny, red_maxx, red_maxy, red_name[:-4]])
+    
+
+    map.save('Map/test' + str(i) + '.png')

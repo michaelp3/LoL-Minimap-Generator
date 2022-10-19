@@ -8,7 +8,7 @@ import timeit
 MAP_SIZE = 534
 ICON_SIZE =int(MAP_SIZE/10)
 PING_PROBABILITY = 0.3
-N_IMAGES = 10
+N_IMAGES = 10000
 
 def main():
     start = timeit.default_timer()
@@ -17,7 +17,7 @@ def main():
     # with turrets: 586 x 588 (no border: 534x534)
     # w/o turrets: 512 x 512
     # Champion icon size : 372x374
-    champion = Image.open('Blue/Aatrox.png')
+    champion = Image.open('Blue/1..png')
     champion = champion.crop(champion.getbbox())
 
     # this part is resizing to match minimap icon ratio
@@ -111,7 +111,7 @@ def main():
             wr.writerow(['test' + str(i) + '.png', blue_minx, blue_miny, blue_maxx, blue_maxy, blue_name[:-4]])
             wr.writerow(['test' + str(i) + '.png', red_minx, red_miny, red_maxx, red_maxy, red_name[:-4]])
 
-        map.save('Adv_test/wping/' + str(i) + '.png')
+        map.save('Adv_test/wping/SmallNumber/' + str(i) + '.png')
         print(f"done {i}")
     
     end = timeit.default_timer()

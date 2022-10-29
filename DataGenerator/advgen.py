@@ -1,14 +1,16 @@
 import random
-from PIL import Image
+from statistics import quantiles
+from PIL import Image, ImageFilter
 import csv
 import os, random
 import timeit
 
 # global constants
-MAP_SIZE = 534
-ICON_SIZE =int(MAP_SIZE/10)
-PING_PROBABILITY = 0.3
-N_IMAGES = 10
+# MAP_SIZE = 534
+MAP_SIZE = 256
+ICON_SIZE =int(MAP_SIZE/9)
+PING_PROBABILITY = 0.1
+N_IMAGES = 5000
 
 def main():
     start = timeit.default_timer()
@@ -17,7 +19,7 @@ def main():
     # with turrets: 586 x 588 (no border: 534x534)
     # w/o turrets: 512 x 512
     # Champion icon size : 372x374
-    champion = Image.open('Blue/Aatrox.png')
+    champion = Image.open('Blue/1..png')
     champion = champion.crop(champion.getbbox())
 
     # this part is resizing to match minimap icon ratio
@@ -25,7 +27,7 @@ def main():
     height = ICON_SIZE
     champion = champion.resize((width, height))
 
-    f = open('test.csv', 'w', newline='')
+    f = open('ten.csv', 'w', newline='')
     wr= csv.writer(f)
     wr.writerow(['image', 'xmin', 'ymin', 'xmax', 'ymax', 'class'])
 
@@ -34,15 +36,15 @@ def main():
 
     for i in range(N_IMAGES):
         map = Image.open('TempMap1.png')
+        map = map.resize((256, 256))
+        blue_files = os.listdir("Blue/")
+        red_files = os.listdir("Red/")
+
+        
         # for each champion in team
         for x in range(5):
-            path = "Blue/"
-            files = os.listdir(path)
-            blue_name = random.choice(files)
-
-            path = "Red/"
-            files = os.listdir(path)
-            red_name = random.choice(files)
+            blue_name = blue_files[x]
+            red_name = red_files[x]
 
             blue_champion = Image.open("Blue/" + blue_name)
             blue_champion = blue_champion.crop(blue_champion.getbbox())
@@ -108,10 +110,12 @@ def main():
                 map.paste(blue_ping, (blue_pingx, blue_pingy), blue_ping)
                 map.paste(red_ping, (red_pingx, red_pingy), red_ping)
 
-            wr.writerow(['test' + str(i) + '.png', blue_minx, blue_miny, blue_maxx, blue_maxy, blue_name[:-4]])
-            wr.writerow(['test' + str(i) + '.png', red_minx, red_miny, red_maxx, red_maxy, red_name[:-4]])
-
-        map.save('Adv_test/wping/' + str(i) + '.png')
+            wr.writerow([str(i) + '.jpg', blue_minx, blue_miny, blue_maxx, blue_maxy, blue_name[:-5]])
+            wr.writerow([str(i) + '.jpg', red_minx, red_miny, red_maxx, red_maxy, red_name[:-5]])
+	
+        map = map.convert('RGB')
+        # map.save('Adv_test/wping/Twenty/' + str(i) + '.jpg', quality = 50)
+        map.save('Adv_test/' + str(i) + '.jpg', quality = 50)
         print(f"done {i}")
     
     end = timeit.default_timer()

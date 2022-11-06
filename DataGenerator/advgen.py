@@ -10,7 +10,9 @@ import timeit
 MAP_SIZE = 256
 ICON_SIZE =int(MAP_SIZE/9)
 PING_PROBABILITY = 0.1
-N_IMAGES = 5000
+N_IMAGES = 10
+IMG_DIRECTORY = "SmallBox/"
+CSV_NAME = "SmallBox.csv"
 
 def main():
     start = timeit.default_timer()
@@ -27,30 +29,41 @@ def main():
     height = ICON_SIZE
     champion = champion.resize((width, height))
 
-    f = open('ten.csv', 'w', newline='')
+    f = open(CSV_NAME, 'w', newline='')
     wr= csv.writer(f)
     wr.writerow(['image', 'xmin', 'ymin', 'xmax', 'ymax', 'class'])
 
     # pings filename array
-    ping_files = ["blue_ping.png", "red_ping1.png", "yellow_ping.png"]
+    ping_files = [Image.open("Pings/blue_ping.png"), Image.open("Pings/red_ping1.png"), Image.open("Pings/yellow_ping.png")]
+
+
+
+    blue_file_names = os.listdir("Blue/")
+    red_file_names = os.listdir("Red/")
+    blue_files = list()
+    red_files = list()
+    for j in blue_file_names :
+        blue_files.append(Image.open("Blue/" + j))
+    for j in red_file_names :
+        red_files.append(Image.open("Red/" + j))
 
     for i in range(N_IMAGES):
         map = Image.open('TempMap1.png')
         map = map.resize((256, 256))
-        blue_files = os.listdir("Blue/")
-        red_files = os.listdir("Red/")
 
-        
         # for each champion in team
         for x in range(5):
-            blue_name = blue_files[x]
-            red_name = red_files[x]
-
-            blue_champion = Image.open("Blue/" + blue_name)
+            blue_name = blue_file_names[x]
+            red_name = red_file_names[x]
+            blue_champion = blue_files[x]
+            red_champion = red_files[x]
+            # blue_name = blue_champion.filename
+            # red_name = red_champion.filename
+            # blue_champion = Image.open("Blue/" + blue_name)
             blue_champion = blue_champion.crop(blue_champion.getbbox())
             blue_champion = blue_champion.resize((width, height))
 
-            red_champion = Image.open("Red/" + red_name)
+            # red_champion = Image.open("Red/" + red_name)
             red_champion = red_champion.crop(red_champion.getbbox())
             red_champion = red_champion.resize((width, height))
 
@@ -81,22 +94,22 @@ def main():
                 red_champion
             )
             
-            blue_minx = blue_x
-            blue_maxx= blue_x + blue_champion.width
-            blue_miny = blue_y
-            blue_maxy = blue_y + blue_champion.height
+            blue_minx = blue_x + 5
+            blue_maxx= blue_x + blue_champion.width - 5
+            blue_miny = blue_y + 5
+            blue_maxy = blue_y + blue_champion.height - 5
             
-            red_minx = red_x
-            red_maxx = red_x + red_champion.width
-            red_miny = red_y
-            red_maxy = red_y + red_champion.height
+            red_minx = red_x + 5
+            red_maxx = red_x + red_champion.width - 5
+            red_miny = red_y + 5
+            red_maxy = red_y + red_champion.height - 5
 
             # Adding ping
             # choose random ping
             blue_ping_idx = random.randint(0,2)
             red_ping_idx = random.randint(0,2)
-            blue_ping = Image.open("Pings/" + ping_files[blue_ping_idx])
-            red_ping = Image.open("Pings/" + ping_files[red_ping_idx])
+            blue_ping = ping_files[blue_ping_idx]
+            red_ping = ping_files[red_ping_idx]
             # edit ping size
             blue_ping = blue_ping.resize(resize_ping(blue_ping_idx, width, height))
             red_ping = red_ping.resize(resize_ping(red_ping_idx, width, height))
@@ -115,7 +128,7 @@ def main():
 	
         map = map.convert('RGB')
         # map.save('Adv_test/wping/Twenty/' + str(i) + '.jpg', quality = 50)
-        map.save('Adv_test/' + str(i) + '.jpg', quality = 50)
+        map.save(IMG_DIRECTORY + str(i) + '.jpg', quality = 50)
         print(f"done {i}")
     
     end = timeit.default_timer()

@@ -6,7 +6,7 @@ import os, random
 
 
 #Get first champion icon for unified dimension
-champion = Image.open('Blue/Aatrox.png')
+champion = Image.open('Blue/1..png')
 champion = champion.crop(champion.getbbox())
 width = int(champion.width/9)
 height = int(champion.height/9)
@@ -16,8 +16,8 @@ f = open('test.csv', 'w', newline='')
 wr= csv.writer(f)
 wr.writerow(['image', 'xmin', 'ymin', 'xmax', 'ymax', 'class'])
 
-for i in range(10):
-    map = Image.open('Map.png')
+for i in range(1):
+    map = Image.open('TempMap1.png')
 
     for x in range(5):
         path = "Blue/"
@@ -43,11 +43,12 @@ for i in range(10):
             map.convert('RGBA')
         )
 
-        blue_x = random.randint(0, map.width - blue_champion.width)
-        blue_y = random.randint(0, map.height - blue_champion.height)
+        blue_x = (int) (blue_champion.width/1.5)
+        # blue_x = random.randint(blue_champion.width, map.width - blue_champion.width)
+        blue_y = random.randint(blue_champion.height, map.height - blue_champion.height)
 
-        red_x = random.randint(0, map.width - red_champion.width)
-        red_y = random.randint(0, map.height - red_champion.height)
+        red_x = random.randint(red_champion.width, map.width - red_champion.width)
+        red_y = random.randint(red_champion.height , map.height - red_champion.height)
 
         map.paste(
             blue_champion,
@@ -75,5 +76,5 @@ for i in range(10):
         wr.writerow(['test' + str(i) + '.png', blue_minx, blue_miny, blue_maxx, blue_maxy, blue_name[:-4]])
         wr.writerow(['test' + str(i) + '.png', red_minx, red_miny, red_maxx, red_maxy, red_name[:-4]])
     
-        
-    map.save('Map/test' + str(i) + '.png')
+    map.show()
+    # map.save('Map/test' + str(i) + '.png')

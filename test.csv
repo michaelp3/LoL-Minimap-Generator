@@ -1,101 +1,11 @@
 image,xmin,ymin,xmax,ymax,class
-test0.png,431,261,484,314,Dr Mundo
-test0.png,197,448,250,501,Aatrox
-test0.png,387,501,440,554,Cassio
-test0.png,503,224,556,277,Yuumi
-test0.png,167,347,220,400,Swain
-test0.png,271,336,324,389,Graves
-test0.png,401,415,454,468,Tristana
-test0.png,169,379,222,432,Kassadin
-test0.png,3,479,56,532,JArvan
-test0.png,338,47,391,100,Master Yi
-test1.png,533,313,586,366,Zyra
-test1.png,158,244,211,297,Garen
-test1.png,220,56,273,109,Miss Fortune
-test1.png,468,271,521,324,Corki
-test1.png,405,184,458,237,Corki
-test1.png,290,533,343,586,Ekko
-test1.png,241,338,294,391,Nocturne
-test1.png,511,338,564,391,Olaf
-test1.png,467,339,520,392,Shen
-test1.png,368,494,421,547,Nami
-test2.png,27,220,80,273,Mega Gnar
-test2.png,165,31,218,84,Skarner
-test2.png,361,428,414,481,Jinx
-test2.png,474,98,527,151,Gangplank
-test2.png,33,182,86,235,Draven
-test2.png,479,522,532,575,Jayce
-test2.png,219,495,272,548,Talon
-test2.png,528,467,581,520,Gangplank
-test2.png,462,5,515,58,Caitlyn
-test2.png,529,18,582,71,Gangplank
-test3.png,261,319,314,372,Nunu
-test3.png,493,449,546,502,Fiora
-test3.png,496,69,549,122,Lissandra
-test3.png,158,316,211,369,Shaco
-test3.png,377,390,430,443,Tristana
-test3.png,475,502,528,555,Nunu
-test3.png,113,519,166,572,Ekko
-test3.png,436,420,489,473,Kennen
-test3.png,475,353,528,406,Skarner
-test3.png,405,533,458,586,Graves
-test4.png,143,62,196,115,Zoe
-test4.png,176,360,229,413,Ryze
-test4.png,340,428,393,481,Renekton
-test4.png,165,360,218,413,Graves
-test4.png,312,189,365,242,Shadow Assassin
-test4.png,466,476,519,529,Zilean
-test4.png,5,496,58,549,Xin Zhao
-test4.png,106,459,159,512,Katarina
-test4.png,440,482,493,535,Akali
-test4.png,286,303,339,356,Qiyana
-test5.png,246,384,299,437,Rhaast
-test5.png,321,50,374,103,Zoe
-test5.png,291,325,344,378,Dr Mundo
-test5.png,351,202,404,255,Shyvana
-test5.png,373,183,426,236,Quinn
-test5.png,141,334,194,387,Tristana
-test5.png,146,383,199,436,Gangplank
-test5.png,13,252,66,305,Nidalee
-test5.png,67,475,120,528,Talon
-test5.png,447,514,500,567,Katarina
-test6.png,25,361,78,414,Karma
-test6.png,110,66,163,119,Nocturne
-test6.png,227,411,280,464,Draven
-test6.png,169,311,222,364,Senna
-test6.png,387,76,440,129,Karma
-test6.png,256,380,309,433,Sylas
-test6.png,146,409,199,462,Ahri
-test6.png,262,281,315,334,Dr Mundo
-test6.png,491,4,544,57,Leona
-test6.png,359,420,412,473,Galio
-test7.png,495,231,548,284,Katarina
-test7.png,396,207,449,260,Pantheon
-test7.png,220,81,273,134,Braum
-test7.png,513,507,566,560,Braum
-test7.png,29,47,82,100,Master Yi
-test7.png,339,531,392,584,Karma
-test7.png,242,248,295,301,Pantheon
-test7.png,494,473,547,526,Olaf
-test7.png,308,285,361,338,Ahri
-test7.png,26,191,79,244,Ryze
-test8.png,48,197,101,250,Qiyana
-test8.png,264,72,317,125,Kayn
-test8.png,44,327,97,380,Malzahar
-test8.png,129,44,182,97,VelKoz
-test8.png,75,183,128,236,Leona
-test8.png,80,77,133,130,Cassio
-test8.png,480,277,533,330,Zilean
-test8.png,318,411,371,464,Cassio
-test8.png,444,261,497,314,Xin Zhao
-test8.png,414,233,467,286,Akali
-test9.png,232,370,285,423,Rakan
-test9.png,126,350,179,403,Yone
-test9.png,9,283,62,336,Kayle
-test9.png,11,229,64,282,Rell
-test9.png,139,488,192,541,Riven
-test9.png,36,515,89,568,Akshan
-test9.png,126,172,179,225,Elise
-test9.png,263,360,316,413,Ryze
-test9.png,287,320,340,373,Kindred
-test9.png,201,9,254,62,Zoe
+test0.png,27,389,68,430,4.
+test0.png,451,359,492,400,10.
+test0.png,27,136,68,177,3.
+test0.png,197,453,238,494,7.
+test0.png,27,50,68,91,3.
+test0.png,229,140,270,181,7.
+test0.png,27,188,68,229,4.
+test0.png,62,364,103,405,8.
+test0.png,27,124,68,165,1.
+test0.png,463,384,504,425,10.
